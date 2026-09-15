@@ -124,24 +124,22 @@
     p { margin: 0 0 18px; }
     .muted { color: var(--muted); }
 
-    .documents {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-top: 36px;
-    }
+.documents {
+  margin-top: 36px;
+}
 .card {
-  width: 420px;
+  width: 100%;
   box-sizing: border-box;
-  margin-left: auto;
 
   background: var(--white);
   border: 1px solid var(--line);
   padding: 30px;
   min-height: 260px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   transition: transform .2s ease, box-shadow .2s ease;
 }
     .card:hover {
@@ -369,7 +367,7 @@
             <div class="dimension"><b>Impacto intergeneracional</b></div>
             <div class="dimension"><b>Innovación y aprendizaje institucional</b></div>
           </div>
-        </div>
+        
 
                 <article class="card">
           <div>
@@ -386,6 +384,7 @@
           </a>
         </article>
       </div>
+        </div>
     </section>
 
     <section id="equipo">
