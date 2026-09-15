@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cuidar lo humano en la era digital. Seminario teórico-práctico y Matriz de Discernimiento Ético para la toma de decisiones.">
+  <title>Cuidar lo Humano en la Era Digital</title>
+  <style>
+    :root {
+      --ink: #18232b;
+      --muted: #64727b;
+      --paper: #f7f6f2;
+      --white: #fff;
+      --accent: #315b63;
+      --accent-dark: #24474e;
+      --line: #dfe2df;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.65;
+    }
+
+    .container { width: min(1080px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 80% 20%, rgba(49,91,99,.09), transparent 28%),
+        linear-gradient(180deg, #fbfaf7 0%, var(--paper) 100%);
+    }
+
+    nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: 24px 0;
+    }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .brand {
+      font-size: .78rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 28px;
+      font-size: .9rem;
+    }
+    nav a:hover { color: var(--ink); }
+
+    .hero { padding: 100px 0 70px; max-width: 900px; }
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .17em;
+      font-size: .76rem;
+      font-weight: 750;
+      margin-bottom: 22px;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(3.1rem, 8vw, 6.5rem);
+      line-height: .98;
+      letter-spacing: -.045em;
+      margin: 0 0 28px;
+      max-width: 850px;
+    }
+    .lead {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: #435159;
+      max-width: 760px;
+      margin-bottom: 36px;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pill {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      padding: 8px 13px;
+      border-radius: 999px;
+      color: #52616a;
+      font-size: .84rem;
+    }
+
+    section { padding: 92px 0; }
+    .section-grid {
+      display: grid;
+      grid-template-columns: .75fr 1.65fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .section-label {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .74rem;
+      font-weight: 750;
+      padding-top: 7px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -.025em;
+      margin: 0 0 22px;
+    }
+    p { margin: 0 0 18px; }
+    .muted { color: var(--muted); }
+
+    .documents {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 30px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 35px rgba(24,35,43,.07);
+    }
+    .card-number {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: #a0aaa9;
+    }
+    .card h3 {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      line-height: 1.15;
+      margin: 16px 0 12px;
+    }
+    .download {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: .9rem;
+      margin-top: 20px;
+    }
+    .download:hover { color: var(--accent-dark); }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-top: 45px;
+    }
+    .fact { padding: 25px 18px; border-right: 1px solid var(--line); }
+    .fact:last-child { border-right: 0; }
+    .fact strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    .fact span { color: var(--muted); font-size: .82rem; }
+
+    .method {
+      background: var(--ink);
+      color: #f7f6f2;
+    }
+    .method .section-label { color: #a9c2c3; }
+    .method p { color: #c5ced0; }
+    .method h2 { color: #fff; }
+    .dimensions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.16);
+      margin-top: 35px;
+    }
+    .dimension {
+      background: var(--ink);
+      padding: 23px;
+      min-height: 105px;
+    }
+    .dimension b { font-family: var(--serif); font-size: 1.08rem; font-weight: 500; }
+
+    .people {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 35px;
+    }
+    .person {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 30px;
+      min-height: 220px;
+    }
+    .person h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.65rem;
+      margin: 0 0 8px;
+    }
+    .person .role {
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 18px;
+    }
+
+    footer {
+      padding: 45px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .82rem;
+    }
+
+    @media (max-width: 760px) {
+      nav a { display: none; }
+      header { min-height: auto; }
+      .hero { padding-top: 135px; padding-bottom: 70px; }
+      .section-grid { grid-template-columns: 1fr; gap: 20px; }
+      .documents, .people { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: repeat(2, 1fr); }
+      .fact:nth-child(2) { border-right: 0; }
+      .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .dimensions { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 460px) {
+      .container { width: min(100% - 28px, 1080px); }
+      section { padding: 65px 0; }
+      .dimensions { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container">
+      <div class="brand">Cuidar lo Humano</div>
+      <div>
+        <a href="#propuesta">Propuesta</a>
+        <a href="#matriz">Matriz</a>
+        <a href="#equipo">Equipo</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container">
+      <div class="hero">
+        <div class="eyebrow">Propuesta académica · Ética · Desarrollo humano · Era digital</div>
+        <h1>Cuidar lo humano en la era digital</h1>
+        <p class="lead">
+          Una propuesta de formación para pensar los desafíos de la inteligencia artificial
+          y la transformación digital desde el desarrollo humano, los derechos humanos,
+          el trabajo, la democracia y la paz.
+        </p>
+        <div class="meta">
+          <span class="pill">Seminario teórico-práctico</span>
+          <span class="pill">4 encuentros · 12 horas</span>
+          <span class="pill">Formato adaptable</span>
+          <span class="pill">Contenido no confesional</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="propuesta">
+      <div class="container section-grid">
+        <div class="section-label">01 · La propuesta</div>
+        <div>
+          <h2>Una formación para deliberar antes de decidir</h2>
+          <p>
+            La aceleración de la inteligencia artificial y de la transformación digital
+            plantea decisiones con consecuencias sobre las personas, el trabajo,
+            las instituciones democráticas y la paz. El Seminario propone herramientas
+            conceptuales y metodológicas para abordar esos desafíos con criterios
+            éticos rigurosos, verificables y transparentes.
+          </p>
+          <p class="muted">
+            El programa está diseñado para incorporarse, con las adaptaciones que cada
+            institución considere pertinentes, a la oferta de posgrado, extensión
+            universitaria o formación continua.
+          </p>
+
+          <div class="facts">
+            <div class="fact"><strong>4</strong><span>encuentros</span></div>
+            <div class="fact"><strong>12</strong><span>horas académicas</span></div>
+            <div class="fact"><strong>12</strong><span>dimensiones de análisis</span></div>
+            <div class="fact"><strong>8</strong><span>pasos de aplicación</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container documents">
+        <article class="card">
+          <div>
+            <div class="card-number">01</div>
+            <h3>Cuidar lo Humano en la Era Digital</h3>
+            <p class="muted">
+              Programa completo del Seminario: fundamentos, objetivos, destinatarios,
+              estructura, encuentros, metodología, evaluación, bibliografía y propuesta
+              de incorporación institucional.
+            </p>
+          </div>
+          <a class="download" href="Cuidar_lo_Humano_en_la_Era_Digital_PROPUESTA.pdf" download>
+            Descargar PDF <span>→</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <div>
+            <div class="card-number">02</div>
+            <h3>Matriz de Discernimiento Ético</h3>
+            <p class="muted">
+              Manual de procedimiento y esquema para rellenar: un instrumento para
+              analizar alternativas, explicitar tensiones, fundamentar decisiones y
+              definir planes de implementación e indicadores.
+            </p>
+          </div>
+          <a class="download" href="Matriz_de_Discernimiento_Etico_CON_ANEXO_PROPUESTA.pdf" download>
+            Descargar PDF <span>→</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="matriz" class="method">
+      <div class="container section-grid">
+        <div class="section-label">02 · El instrumento</div>
+        <div>
+          <h2>La Matriz de Discernimiento Ético</h2>
+          <p>
+            La Matriz traduce los contenidos del Seminario en un instrumento concreto:
+            un esquema que equipos públicos, privados o de la sociedad civil pueden
+            utilizar para deliberar de manera sistemática, transparente y participativa.
+          </p>
+          <p>
+            Su objetivo no es reemplazar el juicio ético, sino disciplinarlo: hacer
+            explícitos los criterios, documentar la evidencia y exponer las tensiones
+            entre los valores en juego para que la decisión pueda ser fundamentada
+            y revisada.
+          </p>
+
+          <div class="dimensions">
+            <div class="dimension"><b>Legalidad</b></div>
+            <div class="dimension"><b>Dignidad humana</b></div>
+            <div class="dimension"><b>Bien común</b></div>
+            <div class="dimension"><b>Derechos humanos</b></div>
+            <div class="dimension"><b>Equidad e inclusión</b></div>
+            <div class="dimension"><b>Sostenibilidad ambiental</b></div>
+            <div class="dimension"><b>Viabilidad económica</b></div>
+            <div class="dimension"><b>Gobernanza y transparencia</b></div>
+            <div class="dimension"><b>Capital social y confianza</b></div>
+            <div class="dimension"><b>Impacto territorial</b></div>
+            <div class="dimension"><b>Impacto intergeneracional</b></div>
+            <div class="dimension"><b>Innovación y aprendizaje institucional</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="equipo">
+      <div class="container section-grid">
+        <div class="section-label">03 · Equipo</div>
+        <div>
+          <h2>Conducción académica</h2>
+          <p class="muted">
+            El Seminario es conducido por un Comité Académico responsable del diseño
+            de contenidos, la selección de expositores y la certificación final.
+          </p>
+
+          <!-- Reemplazar estos bloques con los nombres y CV breves de las dos personas. -->
+          <div class="people">
+            <article class="person">
+              <h3>Nombre y Apellido</h3>
+              <div class="role">Coordinación académica</div>
+              <p class="muted">
+                Breve presentación profesional y académica. Incorporar aquí 3–5 líneas
+                con formación, experiencia relevante y principales áreas de trabajo.
+              </p>
+            </article>
+
+            <article class="person">
+              <h3>Nombre y Apellido</h3>
+              <div class="role">Coordinación académica</div>
+              <p class="muted">
+                Breve presentación profesional y académica. Incorporar aquí 3–5 líneas
+                con formación, experiencia relevante y principales áreas de trabajo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Cuidar lo Humano en la Era Digital · Propuesta académica de formación
+    </div>
+  </footer>
+</body>
+</html>
